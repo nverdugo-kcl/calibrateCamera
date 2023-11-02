@@ -11,7 +11,7 @@ dictionary = cv2.aruco.getPredefinedDictionary(ARUCO_DICT)
 board      = cv2.aruco.CharucoBoard((SQUARES_VERTICALLY, SQUARES_HORIZONTALLY), SQUARE_LENGTH, MARKER_LENGTH, dictionary)
 params     = cv2.aruco.DetectorParameters()
 # Load PNG images from folder
-image_files = [os.path.join(PATH_TO_YOUR_IMAGES, f) for f in os.listdir(PATH_TO_YOUR_IMAGES) if f.endswith(".tiff")]
+image_files = [os.path.join(PATH_TO_YOUR_IMAGES, f) for f in os.listdir(PATH_TO_YOUR_IMAGES) if f.endswith(".png")]
 image_files.sort()  # Ensure files are in order
 if not load_from_file:
    all_charuco_corners = []
@@ -66,19 +66,19 @@ for id, image_file in enumerate(image_files):
     #undistorted_image = cv2.undistort(image, camera_matrix, dist_coeffs)
     #imS = cv2.resize(undistorted_image, (640, 480)) 
     #cv2.imshow('Undistorted Image', imS)
-#     plt.figure()
+    plt.figure()
     frame = cv2.imread(image_file)
     img_undist = cv2.undistort(frame, camera_matrix, dist_coeffs)
-#     plt.subplot(1,2,1)
-#     plt.imshow(frame)
-#     plt.title("Raw image")
-#     plt.axis("off")
-#     plt.subplot(1,2,2)
-#     plt.imshow(img_undist)
-#     plt.title("Corrected image")
-#     plt.axis("off")
-#     plt.savefig("./Calib_out/"+str(id)+".png")
-#     plt.close()
+    plt.subplot(1,2,1)
+    plt.imshow(frame)
+    plt.title("Raw image")
+    plt.axis("off")
+    plt.subplot(1,2,2)
+    plt.imshow(img_undist)
+    plt.title("Corrected image")
+    plt.axis("off")
+    # plt.savefig("./Calib_out/"+str(id)+".png")
+    plt.close()
     #cv2.waitKey(0)
     # Save the undistorted image
     cv2.imwrite('./Calib_out/'+str(id)+'.png', img_undist)  
