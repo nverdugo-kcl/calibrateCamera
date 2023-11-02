@@ -1,3 +1,3 @@
-# Camera Calibration REPO
+# Camera Calibration
 
 Jupyter notebook used to take in some images, calculate a camera calibration matrix, then return it.
